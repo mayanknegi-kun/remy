@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Reminder {
+  id          String   @id @default(cuid())
+  userPhone   String
+  title       String
+  scheduledAt DateTime
+  sent        Boolean  @default(false)
+  attempts    Int      @default(0)
+  createdAt   DateTime @default(now())
+}
